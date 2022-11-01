@@ -18,7 +18,8 @@ import {
 } from "./classes";
 import { InjectType, Container, ScopedContainer } from "./di";
 
-export const container = new Container();
+// export const container = new Container();
+export const container = new ScopedContainer();
 
 container.register(AData, []);
 container.register(BData, []);
@@ -35,5 +36,6 @@ container.register(D, [DData]);
 container.register(F, [FData]);
 container.register(B, [D, F, BData]);
 container.register(C, [G, B, H, CData]);
-container.register(A, [B, C, G, AData]);
+// container.register(A, [B, C, G, AData]);
+container.register(A, [B, C, G, AData], void 0, InjectType.Scope);
 container.build();
